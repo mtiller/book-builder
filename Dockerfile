@@ -22,7 +22,7 @@ RUN apt-get update --fix-missing && apt-get upgrade -y -o Dpkg::Options::="--for
 RUN apt-get update && apt-get install -y python python-dev python-pip python-virtualenv
 
 # Install OpenModelica
-RUN apt-get update && apt-get install -y omc=1.12.0-1 omlib-modelica-3.2.2 
+RUN apt-get update && apt-get install -y omc=1.12.0-1 omlib-modelica-3.2.2
 # omniorb python-omniorb omniidl omniidl-python
 
 # Now a bunch of dependencies required for building the book
@@ -45,6 +45,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     latex-cjk-common \
     texlive-xetex \
     texlive-generic-extra \
+    fonts-lmodern \
     fonts-arphic-gkai00mp fonts-arphic-ukai fonts-arphic-uming \
     fonts-arphic-bkai00mp fonts-arphic-bsmi00lp fonts-arphic-gbsn00lp
 
