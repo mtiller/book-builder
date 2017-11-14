@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y omc=1.12.0-1 omlib-modelica-3.2.2
 RUN apt-get update && apt-get install -y --no-install-recommends \
     calibre \
     git \
+    dvipng \
     latexmk \
     librsvg2-bin \
     nodejs \
