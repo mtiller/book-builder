@@ -4,7 +4,7 @@ This image is used to build the book "Modelica by Example" which is located at:
 
 https://github.com/xogeny/ModelicaBook
 
-The `Dockerfile` here creates an Ubuntu 14.04 based image that installs
+The `Dockerfile` here creates an Ubuntu 16.04 based image that installs
 OpenModelica (1.12.0), Python, Sphinx and a variety of other tools
 required in order to build the book.
 
