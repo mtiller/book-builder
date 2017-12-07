@@ -69,6 +69,9 @@ RUN pip install --upgrade s3cmd
 # Install mathjax replacement script
 RUN npm install -g mathjax-node-page@1.4.1 yarn@1.3.2
 
+# Install simple http server
+RUN npm install -g serve
+
 # Create a directory for all the book related stuff
 RUN mkdir /opt/MBE
 
