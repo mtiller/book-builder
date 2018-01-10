@@ -56,7 +56,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Upgrade pip itself first
 RUN pip install --upgrade pip
 # Install specific tested Sphinx version + internationalization stuff
-RUN pip install --upgrade 'sphinx==1.6.5'
+RUN pip install --upgrade 'sphinx==1.6.6'
 RUN pip install --upgrade 'sphinx-intl==0.9.10'
 # Because I was running into this: https://github.com/sphinx-doc/sphinx/issues/3212
 # RUN pip install docutils==0.12
