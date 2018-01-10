@@ -36,11 +36,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-fonts-recommended \
     texlive-latex-recommended \
     texlive-latex-extra \
-    python-matplotlib \
-    python-pip \
-    python-scipy \
-    python-sphinx \
-    python-jinja2 \
     fonts-droid-fallback \
     # Install internationalization packages needed for the book
     latex-cjk-common \
@@ -58,10 +53,10 @@ RUN pip install --upgrade pip
 # Install specific tested Sphinx version + internationalization stuff
 RUN pip install --upgrade 'sphinx==1.6.6'
 RUN pip install --upgrade 'sphinx-intl==0.9.10'
-# Because I was running into this: https://github.com/sphinx-doc/sphinx/issues/3212
-# RUN pip install docutils==0.12
 RUN pip install --upgrade 'docutils==0.14'
-RUN pip install --upgrade 'matplotlib==2.1.0'
+RUN pip install --upgrade 'docutils'
+RUN pip install --upgrade 'matplotlib==2.1.1'
+RUN pip install --upgrade 'scipy==1.0.0'
 
 # Temporary: use the newest s3cmd
 RUN pip install --upgrade s3cmd
