@@ -15,6 +15,11 @@ RUN curl -s http://build.openmodelica.org/apt/openmodelica.asc | apt-key add -
 # Add recent nodejs repo
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 
+# Add recent yarn repo
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
+
 # Make sure apt is up to date
 RUN apt-get update --fix-missing && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
@@ -36,16 +41,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-fonts-recommended \
     texlive-latex-recommended \
     texlive-latex-extra \
-    python-matplotlib \
-    python-pip \
-    python-scipy \
-    python-sphinx \
-    python-jinja2 \
     fonts-droid-fallback \
     # Install internationalization packages needed for the book
     latex-cjk-common \
     texlive-xetex \
     texlive-generic-extra \
+    yarn=1.3.2-1 \
     fonts-lmodern \
     fonts-arphic-gkai00mp fonts-arphic-ukai fonts-arphic-uming \
     fonts-arphic-bkai00mp fonts-arphic-bsmi00lp fonts-arphic-gbsn00lp
@@ -56,18 +57,21 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Upgrade pip itself first
 RUN pip install --upgrade pip
 # Install specific tested Sphinx version + internationalization stuff
-RUN pip install --upgrade 'sphinx==1.6.5'
+RUN pip install --upgrade 'sphinx==1.6.6'
 RUN pip install --upgrade 'sphinx-intl==0.9.10'
-# Because I was running into this: https://github.com/sphinx-doc/sphinx/issues/3212
-# RUN pip install docutils==0.12
 RUN pip install --upgrade 'docutils==0.14'
-RUN pip install --upgrade 'matplotlib==2.1.0'
+RUN pip install --upgrade 'docutils'
+RUN pip install --upgrade 'matplotlib==2.1.1'
+RUN pip install --upgrade 'scipy==1.0.0'
 
 # Temporary: use the newest s3cmd
 RUN pip install --upgrade s3cmd
 
 # Install mathjax replacement script
-RUN npm install -g mathjax-node-page@1.4.1 yarn@1.3.2
+RUN npm install -g mathjax-node-page@2.0.0
+
+# Install simple http server
+RUN npm install -g serve
 
 # Create a directory for all the book related stuff
 RUN mkdir /opt/MBE
