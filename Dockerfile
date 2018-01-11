@@ -9,8 +9,8 @@ ENV DEBIAN_FRONTEND noninteractive
 USER root
 
 # Add OpenModelica stable build repo
-RUN add-apt-repository 'deb http://build.openmodelica.org/apt xenial stable'
-RUN curl -s http://build.openmodelica.org/apt/openmodelica.asc | apt-key add -
+RUN add-apt-repository 'deb https://build.openmodelica.org/omc/builds/linux/releases/1.12.0/ xenial release'
+RUN curl -s https://build.openmodelica.org/apt/openmodelica.asc | apt-key add -
 
 # Add recent nodejs repo
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
